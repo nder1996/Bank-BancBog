@@ -1,10 +1,13 @@
 package bdb.Backend.dto.response;
 
 
+import bdb.Backend.exception.InvalidApiResponseException;
+
 public class ApiResponse<T> {
     private Meta meta;
     private T data;
     private ErrorDetails error;
+
 
     // Constructors
     public ApiResponse() {

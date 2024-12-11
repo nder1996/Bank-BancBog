@@ -11,7 +11,7 @@ public class ResponseApiBuilderService {
     public static <T> ApiResponse<T> successResponse(T data, String key) {
         ApiResponse<T> response = new ApiResponse<>();
         try {
-            response.setMeta(new ApiResponse.Meta("Operación Exitosa", 200));
+            response.setMeta(new ApiResponse.Meta("Success", 200));
             response.setData(data);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -25,7 +25,7 @@ public class ResponseApiBuilderService {
         ApiResponse<T> response = new ApiResponse<>();
         try {
             response.setData(null);
-            response.setMeta(new ApiResponse.Meta("Solicitud Incorrecta", codeHttp));
+            response.setMeta(new ApiResponse.Meta("Bad Request", codeHttp));
             response.setError(new ApiResponse.ErrorDetails(codeName, codeDescription));
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

@@ -1,16 +1,20 @@
 package bdb.Backend.service;
 
+import bdb.Backend.dto.request.ClienteRequest;
 import bdb.Backend.dto.response.ApiResponse;
 import bdb.Backend.dto.response.ClienteResponse;
 import bdb.Backend.repository.ClienteRepository;
-import lombok.extern.slf4j.Slf4j;
+import bdb.Backend.util.LogUtils;
+import bdb.Backend.util.ValidationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
-@Slf4j
 public class ClienteService implements  IClienteService{
 
 
@@ -20,28 +24,47 @@ public class ClienteService implements  IClienteService{
     @Autowired
     ResponseApiBuilderService responseApiBuilderService;
 
+
     private static final Logger logger = LoggerFactory.getLogger(ClienteService.class);
 
 
-    @Override
-    public ApiResponse<ClienteResponse> byCliente(String codigo, String numeroDocumento) {
-        try {
-            logger.info("Iniciando búsqueda de cliente - Código: {}, Documento: {}",
-                    codigo, numeroDocumento);
+   public ApiResponse<ClienteResponse> byCliente(ClienteRequest request) {
+       try {
 
-            ClienteResponse clienteResponse = this.clienteRepository.byCliente(codigo, numeroDocumento);
+           List<ValidationUtil.ValidationError> validationErrors = ValidationUtil.validateObject(request);
+           if (!validationErrors.isEmpty()) {
+               String errorMessage = validationErrors.stream()
+                       .map(error -> error.getProperty() + ": " + error.getMessage())
+                       .collect(Collectors.joining(", "));
 
-            if(clienteResponse != null) {
-                logger.info("Cliente encontrado exitosamente");
-                return ResponseApiBuilderService.successResponse(clienteResponse, "ClienteVerificado");
-            } else {
-                logger.info("Cliente no encontrado para código: {} y documento: {}",
-                        codigo, numeroDocumento);
-                return ResponseApiBuilderService.errorResponse(404, "CLIENT_NOT_FOUND", "Cliente no encontrado");
-            }
-        } catch (Exception e) {
-            logger.error("Error al buscar cliente: {}", e.getMessage(), e);
-            return ResponseApiBuilderService.errorResponse(500, "SERVER_ERROR", "ERROR EN EL SERVIDOR");
-        }
-    }
+               LogUtils.advertencia(logger, "Error de validación", errorMessage);
+
+               return ResponseApiBuilderService.errorResponse(
+                       400,
+                       "VALIDATION_ERROR",
+                       "Error de validación: " + errorMessage
+               );
+           }
+
+           LogUtils.inicioOperacion(logger, "búsqueda de cliente",
+                   String.format("código=%s, documento=%s", request.getCodigo(), request.getNumeroDocumento()));
+
+           ClienteResponse clienteResponse = this.clienteRepository.byCliente(request.getCodigo(), request.getNumeroDocumento());
+
+           if (clienteResponse != null) {
+               LogUtils.finOperacion(logger, "búsqueda de cliente",
+                       String.format("cliente=%s %s", clienteResponse.getPrimerNombre(), clienteResponse.getPrimerApellido()));
+               return ResponseApiBuilderService.successResponse(clienteResponse, "ClienteVerificado");
+           } else {
+               LogUtils.advertencia(logger, "Cliente no encontrado",
+                       String.format("código=%s, documento=%s", request.getCodigo(), request.getNumeroDocumento()));
+               return ResponseApiBuilderService.errorResponse(404, "CLIENT_NOT_FOUND", "Cliente no encontrado");
+           }
+       } catch (Exception e) {
+           LogUtils.error(logger, "Error al buscar cliente", e.getMessage());
+           return ResponseApiBuilderService.errorResponse(500, "SERVER_ERROR", "ERROR EN EL SERVIDOR");
+       }
+   }
+
+
 }
