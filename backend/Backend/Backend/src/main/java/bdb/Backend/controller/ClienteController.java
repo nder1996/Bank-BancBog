@@ -16,11 +16,6 @@ public class ClienteController {
     @Autowired
     private ClienteService clientService;
 
-    @GetMapping("/prueba")
-    public ResponseEntity<String> getAllGestionTareas() {
-        return ResponseEntity.status(200).body("response");
-    }
-
 
     @GetMapping("/consulta")
     public ResponseEntity<ApiResponse<ClienteResponse>> byCliente(@RequestBody ClienteRequest request) {

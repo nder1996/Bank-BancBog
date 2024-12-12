@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 public class TipoDocumentoModel {
 
     String codigo;
-    String nombre;
     String descripcion;
 
 
