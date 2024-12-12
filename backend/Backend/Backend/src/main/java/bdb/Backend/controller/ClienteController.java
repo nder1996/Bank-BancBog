@@ -10,14 +10,14 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/cliente")
 public class ClienteController {
 
     @Autowired
     private ClienteService clientService;
 
 
-    @GetMapping("/consulta")
+    @PostMapping("/consulta")
     public ResponseEntity<ApiResponse<ClienteResponse>> byCliente(@RequestBody ClienteRequest request) {
         ApiResponse<ClienteResponse> response = this.clientService.byCliente(request);
         return ResponseEntity.status(response.getMeta().getStatusCode()).body(response);

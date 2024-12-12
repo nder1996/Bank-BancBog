@@ -7,26 +7,48 @@
         <h2 class="text-center mb-4 fw-bold text-primary">Búsqueda de Cliente</h2>
 
         <p class="text-center text-muted mb-4">Ingresa tipo y número de documento</p>
-
-        <div class="row g-3">
-            <div class="col-12">
-                <select class="form-select">
-                    <option selected>C.C.</option>
-                    <option>C.E.</option>
-                    <option>Pasaporte</option>
-                </select>
-            </div>
-            <div class="col-12">
-                <input type="text" class="form-control" placeholder="Ingresa número">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="text-center my-4">
-                    <button class="btn-search">Ingresar</button>
+        <form class="container" [formGroup]="byClienteForm" (ngSubmit)="getByCliente()">
+            <div class="row g-3">
+                <div class="col-12">
+                    <select class="form-select" formControlName="documentType">
+                        <option value="" disabled selected>Seleccione tipo de documento</option>
+                        <option *ngFor="let tipo of ListTipoDocumento" [value]="tipo.codigo">
+                            {{tipo.descripcion}}
+                        </option>
+                    </select>
+                    <div *ngIf="byClienteForm.get('documentType')?.touched && byClienteForm.get('documentType')?.errors" class="text-danger">
+                        <small *ngIf="byClienteForm.get('documentType')?.errors?.['required']">
+                          El tipo de documento es requerido
+                        </small>
+                      </div>
+                </div>
+                <div class="col-12">
+                    <input type="text" class="form-control" placeholder="Ingresa número"  formControlName="documentNumber" (input)="formatDocumentNumber($event)">
+                    <div *ngIf="byClienteForm.get('documentNumber')?.touched && byClienteForm.get('documentNumber')?.errors" class="text-danger">
+                        <small *ngIf="byClienteForm.get('documentNumber')?.errors?.['required']">
+                          El número de documento es requerido
+                        </small>
+                        <small *ngIf="byClienteForm.get('documentNumber')?.errors?.['minlength']">
+                          El número debe tener al menos 8 caracteres
+                        </small>
+                        <small *ngIf="byClienteForm.get('documentNumber')?.errors?.['maxlength']">
+                          El número no debe exceder 11 caracteres
+                        </small>
+                        <small *ngIf="byClienteForm.get('documentNumber')?.errors?.['pattern']">
+                          Solo se permiten números
+                        </small>
+                      </div>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center my-4">
+                        <button class="btn-search" [disabled]="!byClienteForm.valid">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
 
 
         <div class="client-type-box">

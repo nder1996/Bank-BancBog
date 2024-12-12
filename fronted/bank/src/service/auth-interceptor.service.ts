@@ -31,7 +31,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         tap({
           next: (event: HttpEvent<any>) => {
             // Uncomment if you want success logging
-             console.log('✅ Respuesta exitosa para:', req.url);
+           //  console.log('✅ Respuesta exitosa para:', req.url);
           },
           error: (error: HttpErrorResponse) => {
             this.logError(req, error);
@@ -41,21 +41,21 @@ export class AuthInterceptorService implements HttpInterceptor {
     }
   
     private logRequest(request: HttpRequest<any>): void {
-      console.log("📡 Request:", {
+      /*console.log("📡 Request:", {
         url: request.url,
         method: request.method,
         headers: request.headers.keys(),
         timestamp: new Date().toISOString()
-      });
+      });*/
     }
   
     private logError(request: HttpRequest<any>, error: HttpErrorResponse): void {
-      console.error('❌ Error en la petición:', {
+      /*console.error('❌ Error en la petición:', {
         url: request.url,
         status: error.status,
         message: error.message,
         timestamp: new Date().toISOString()
-      });
+      });*/
     }
   
   

@@ -1,1 +1,61 @@
-<p>resumen-cliente-page works!</p>
+<style>
+    .atras {
+        color: rgb(20, 50, 125);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+</style>
+
+<div class="login-container">
+    <i class="bi bi-box-arrow-in-left atras" (click)="resetDataPersona()"><small>Volver al buscador</small></i>
+    <div class="header-blue">
+        <img src="/assets/img/logoBB.png" alt="Banco de Bogotá" class="logo">
+    </div>
+
+    <div class="mobile-frame">
+        <h2 class="text-center mb-4 fw-bold text-primary">Búsqueda de Cliente</h2>
+
+        <p class="text-center text-muted mb-4">Ingresa tipo y número de documento</p>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <label class="form-label">Primer Nombre</label>
+                    <input type="text" class="form-control" placeholder="Ingrese primer nombre" [(ngModel)]="persona.primerNombre" disabled>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Segundo Nombre</label>
+                    <input type="text" class="form-control" placeholder="Ingrese segundo nombre" [(ngModel)]="persona.segundoApellido" disabled>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label class="form-label">Primer Apellido</label>
+                    <input  [(ngModel)]="persona.primerApellido"  type="text" class="form-control" placeholder="Ingrese primer apellido" disabled>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Segundo Apellido</label>
+                    <input type="text" class="form-control" placeholder="Ingrese segundo apellido" disabled  [(ngModel)]="persona.segundoApellido" >
+                </div>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" placeholder="Ingrese número telefónico" disabled     [(ngModel)]="persona.telefono" >
+            </div>
+            <div class="col-12">
+                <label class="form-label">Dirección</label>
+                <input type="text" class="form-control" placeholder="Ingrese dirección" disabled [(ngModel)]="persona.direccion">
+            </div>
+            <div class="col-12">
+                <label class="form-label">Ciudad de Residencia</label>
+                <input type="text" class="form-control" placeholder="Ingrese ciudad" disabled  [(ngModel)]="persona.ciudadResidencia" >
+            </div>
+        </div>
+
+        <div class="client-type-box">
+            <p class="fw-medium mb-2">Banca Personas</p>
+            <p class="text-muted mb-1">Banca Empresarial y Corporativo</p>
+            <p class="text-muted mb-0">Afiliados</p>
+        </div>
+    </div>
+</div>

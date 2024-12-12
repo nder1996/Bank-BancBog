@@ -3,19 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { PrincipalComponent } from './presentation/pages/principal/principal.component';
 import { BuscarClientePageComponent } from './presentation/components/buscar-cliente-page/buscar-cliente-page.component';
 import { ResumenClientePageComponent } from './presentation/components/resumen-cliente-page/resumen-cliente-page.component';
+import { AuthGuard } from 'src/auth/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'principal', pathMatch: 'full' },
-  { path: 'principal', component: PrincipalComponent },
-  { path: 'buscarCliente1', component: BuscarClientePageComponent },
-  { path: 'ResumenCliente1', component: ResumenClientePageComponent },
-  { 
-    path: 'principal', 
-    component: PrincipalComponent,
-    children: [
-      { path: 'buscarCliente', component: BuscarClientePageComponent },
-      { path: 'ResumenCliente', component: ResumenClientePageComponent }
-    ]
+  { path: '', redirectTo: 'buscarCliente', pathMatch: 'full' },
+  {
+    path: 'buscarCliente',
+    component: BuscarClientePageComponent
+  },
+  {
+    path: 'ResumenCliente',
+    component: ResumenClientePageComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
