@@ -1,18 +1,32 @@
 package bdb.Backend.dto.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+@Schema(description = "Respuesta con los datos del cliente")
 public class ClienteResponse {
 
+    @Schema(description = "Primer nombre del cliente", example = "Juan")
     private String primerNombre;
+
+    @Schema(description = "Segundo nombre del cliente", example = "Carlos")
     private String segundoNombre;
+
+    @Schema(description = "Primer apellido del cliente", example = "Pérez")
     private String primerApellido;
+
+    @Schema(description = "Segundo apellido del cliente", example = "García")
     private String segundoApellido;
+
+    @Schema(description = "Número de teléfono del cliente", example = "3157564532")
     private String telefono;
+
+    @Schema(description = "Dirección del cliente", example = "Calle 123 # 45-67")
     private String direccion;
+
+    @Schema(description = "Ciudad de residencia del cliente", example = "Bogotá")
     private String ciudadResidencia;
 
 

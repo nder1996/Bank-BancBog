@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/enviroments/enviroment';
@@ -16,7 +16,10 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   byCliente(request: ClienteRequest): Observable<ApiResponse<ClienteResponse>> {
-    return this.http.post<ApiResponse<ClienteResponse>>(`${this.clienteUrl}/consulta`, request);
+    const params = new HttpParams()
+      .set('codigo', (request.codigo ?? "N" ))
+      .set('numeroDocumento', (request.numeroDocumento ?? 0 ));
+      return this.http.get<ApiResponse<ClienteResponse>>(`${this.clienteUrl}/consulta`, { params });
   }
 
 

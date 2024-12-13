@@ -2,12 +2,19 @@ package bdb.Backend.dto.response;
 
 
 import bdb.Backend.exception.InvalidApiResponseException;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(description = "Estructura de respuesta API genérica")
 public class ApiResponse<T> {
-    private Meta meta;
-    private T data;
-    private ErrorDetails error;
 
+    @Schema(description = "Metadatos de la respuesta")
+    private Meta meta;
+
+    @Schema(description = "Datos de la respuesta")
+    private T data;
+
+    @Schema(description = "Detalles del error si existe")
+    private ErrorDetails error;
 
     // Constructors
     public ApiResponse() {
@@ -44,8 +51,15 @@ public class ApiResponse<T> {
         this.error = error;
     }
 
+    // Inner Classes
+
+    @Schema(description = "Metadatos de la respuesta")
     public static class Meta {
+
+        @Schema(description = "Mensaje de la operación", example = "Operación Exitosa")
         private String message;
+
+        @Schema(description = "Código de estado HTTP", example = "200")
         private Integer statusCode;
 
         // Constructors
@@ -75,8 +89,13 @@ public class ApiResponse<T> {
         }
     }
 
+    @Schema(description = "Detalles del error")
     public static class ErrorDetails {
+
+        @Schema(description = "Código del error", example = "SERVER_ERROR")
         private String code;
+
+        @Schema(description = "Descripción del error", example = "ERROR EN EL SERVIDOR")
         private String description;
 
         // Constructors

@@ -32,7 +32,7 @@ public class ReferenceService {
                 return ResponseApiBuilderService.successResponse(tipoDocumento, "TIPO_DOCUMENTO");
             } else {
                 LogUtils.advertencia(log, "tipos de documento", "No hay registros disponibles");
-                return ResponseApiBuilderService.errorResponse(200, "NO_CONTENT", "No hay registro disponibles");
+                return ResponseApiBuilderService.errorResponse(404, "NO_CONTENT", "No hay registro disponibles");
             }
         } catch (Exception e) {
             LogUtils.error(log, "Error al obtener tipos de documento", e.getMessage());

@@ -30,6 +30,16 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         try {
+
+            if (request.getRequestURI().contains("/api-docs") || request.getRequestURI().contains("/swagger-ui") || request.getRequestURI().contains("/swagger-ui/index.html")) {
+                SecurityContextHolder.getContext().setAuthentication(
+                        new UsernamePasswordAuthenticationToken("swagger-ui", null, Collections.emptyList())
+                );
+                filterChain.doFilter(request, response);
+                return;
+            }
+
+
             String authHeader = request.getHeader("Authorization");
 
             // Check if Authorization header exists and has correct format
@@ -37,6 +47,7 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
                 handleAuthenticationFailure(response, "Invalid authentication header");
                 return;
             }
+
 
             // Safely decode and validate credentials
             String credentials;
@@ -84,7 +95,7 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
             handleAuthenticationFailure(response, "Authentication failed");
         } finally {
             // Clear the security context to prevent memory leaks
-            if (response.getStatus() >= HttpServletResponse.SC_BAD_REQUEST) {
+            if (response.getStatus() >= HttpServletResponse.SC_BAD_REQUEST && !request.getRequestURI().contains("/api-docs") || !request.getRequestURI().contains("/swagger-ui") ||  !request.getRequestURI().contains("/swagger-ui/index.html")) {
                 SecurityContextHolder.clearContext();
             }
         }

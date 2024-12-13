@@ -1,16 +1,12 @@
-:root {
-    --bdb-primary-blue: #14327D;
-    --bdb-secondary-blue: #0051A0;
-}
+
 
 body {
-    background: #F5F7FA;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .login-container {
     position: relative;
-    max-width: 500px;
+    max-width: 470px;
     margin: 2rem auto;
 }
 

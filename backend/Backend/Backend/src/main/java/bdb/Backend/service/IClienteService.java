@@ -6,5 +6,5 @@ import bdb.Backend.dto.response.ClienteResponse;
 
 public interface IClienteService {
 
-    public ApiResponse<ClienteResponse> byCliente(ClienteRequest request);
+    public ApiResponse<ClienteResponse> byCliente(String tipoDocumento,String numeroDocumento);
 }

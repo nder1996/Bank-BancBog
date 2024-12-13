@@ -87,7 +87,7 @@ export class BuscarClientePageComponent {
   
       if (!response) return;
   
-      this.toastService.showToast(response.meta.message || 'Se encontró resultado', 'success');
+      this.toastService.showToast('¡Cliente encontrado con éxito!', 'success');
       this.detalleCliente = response.data ?? new ClienteResponse();
       this.localStorage.save("detallesUsuario", this.detalleCliente);
       this.byClienteForm.reset();

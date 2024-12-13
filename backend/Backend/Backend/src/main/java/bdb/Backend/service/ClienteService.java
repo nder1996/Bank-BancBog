@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,9 +29,9 @@ public class ClienteService implements  IClienteService{
     private static final Logger logger = LoggerFactory.getLogger(ClienteService.class);
 
 
-   public ApiResponse<ClienteResponse> byCliente(ClienteRequest request) {
+   public ApiResponse<ClienteResponse> byCliente(String tipoDocumento,String numeroDocumento) {
        try {
-
+           ClienteRequest request = new ClienteRequest(tipoDocumento,numeroDocumento);
            List<ValidationUtil.ValidationError> validationErrors = ValidationUtil.validateObject(request);
            if (!validationErrors.isEmpty()) {
                String errorMessage = validationErrors.stream()
