@@ -1,0 +1,466 @@
+{
+	"info": {
+		"_postman_id": "b0d3ecde-6e02-4ea1-ae63-a9ee02f7b0c1",
+		"name": "Bank-Bogota",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28222845"
+	},
+	"item": [
+		{
+			"name": "clientes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic WC1BUEktS0VZLUJBTkstQkFOQ08tQk9HLTIwMjQ6MTIzNDU2UVdFNFJRV1dXUVcyMDI0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/v1/cliente/consulta?codigo=C1&numeroDocumento1=23445322",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"cliente",
+						"consulta"
+					],
+					"query": [
+						{
+							"key": "codigo",
+							"value": "C1"
+						},
+						{
+							"key": "numeroDocumento1",
+							"value": "23445322"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "clientes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic WC1BUEktS0VZLUJBTkstQkFOQ08tQk9HLTIwMjQ6MTIzNDU2UVdFNFJRV1dXUVcyMDI0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/v1/cliente/consulta?codigo=C&numeroDocumento=23445322",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"consulta"
+							],
+							"query": [
+								{
+									"key": "codigo",
+									"value": "C"
+								},
+								{
+									"key": "numeroDocumento",
+									"value": "23445322"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Dec 2024 06:30:43 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"meta\": {\n        \"message\": \"Success\",\n        \"statusCode\": 200\n    },\n    \"data\": {\n        \"primerNombre\": \"Juan\",\n        \"segundoNombre\": \"Carlos\",\n        \"primerApellido\": \"Rodríguez\",\n        \"segundoApellido\": \"Gómez\",\n        \"telefono\": \"3157564532\",\n        \"direccion\": \"Calle 123 # 45-67\",\n        \"ciudadResidencia\": \"Bogotá\"\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "errorcliente-1",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic WC1BUEktS0VZLUJBTkstQkFOQ08tQk9HLTIwMjQ6MTIzNDU2UVdFNFJRV1dXUVcyMDI0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/v1/cliente/consulta?codigo=C1&numeroDocumento1=23445322",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"consulta"
+							],
+							"query": [
+								{
+									"key": "codigo",
+									"value": "C1"
+								},
+								{
+									"key": "numeroDocumento1",
+									"value": "23445322"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Dec 2024 06:31:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"meta\": {\n        \"message\": \"Bad Request\",\n        \"statusCode\": 400\n    },\n    \"data\": null,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"description\": \"Error de validación: codigo: El código no es válido, codigo: El código no es válido\"\n    }\n}"
+				},
+				{
+					"name": "errorCliente-2",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic WC1BUEktS0VZLUJBTkstQkFOQ08tQk9HLTIwMjQ6MTIzNDU2UVdFNFJRV1dXUVcyMDI0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/v1/cliente/consulta?codigo=C1&numeroDocumento1=23445322",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"consulta"
+							],
+							"query": [
+								{
+									"key": "codigo",
+									"value": "C1"
+								},
+								{
+									"key": "numeroDocumento1",
+									"value": "23445322"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Dec 2024 06:31:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"meta\": {\n        \"message\": null,\n        \"statusCode\": null\n    },\n    \"data\": null,\n    \"error\": {\n        \"code\": \"INTERNAL_SERVER_ERROR\",\n        \"description\": \"Required request parameter 'numeroDocumento' for method parameter type String is not present\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "referenceData",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "tipoDocumento",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic WC1BUEktS0VZLUJBTkstQkFOQ08tQk9HLTIwMjQ6MTIzNDU2UVdFNFJRV1dXUVcyMDI0",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8090/api/v1/reference/getAllTipoDocumento"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Dec 2024 06:33:36 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"meta\": {\n        \"message\": \"Success\",\n        \"statusCode\": 200\n    },\n    \"data\": [\n        {\n            \"codigo\": \"C\",\n            \"descripcion\": \"Cédula de ciudadanía\"\n        },\n        {\n            \"codigo\": \"P\",\n            \"descripcion\": \"Pasaporte\"\n        }\n    ],\n    \"error\": null\n}"
+				}
+			]
+		}
+	]
+}
